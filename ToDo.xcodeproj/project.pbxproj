@@ -10,6 +10,9 @@
 		05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */; };
 		05ADEEA61F66F6B00083EFC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */; };
 		05ADEEA91F66F6B00083EFC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA71F66F6B00083EFC5 /* LaunchScreen.storyboard */; };
+		05B15A681F67031100B891B6 /* TDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B15A671F67031100B891B6 /* TDTabBarController.swift */; };
+		05B15A6B1F67063000B891B6 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B15A691F67063000B891B6 /* ToDoViewController.swift */; };
+		05B15A6C1F67063000B891B6 /* ToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B15A6A1F67063000B891B6 /* ToDoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +21,9 @@
 		05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05ADEEA81F66F6B00083EFC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05ADEEAA1F66F6B00083EFC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05B15A671F67031100B891B6 /* TDTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDTabBarController.swift; sourceTree = "<group>"; };
+		05B15A691F67063000B891B6 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		05B15A6A1F67063000B891B6 /* ToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +68,21 @@
 		05ADEEB01F66F7040083EFC5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05B15A661F6702E700B891B6 /* Base */,
+				05B15A691F67063000B891B6 /* ToDoViewController.swift */,
+				05B15A6A1F67063000B891B6 /* ToDoViewController.xib */,
 			);
 			name = Controllers;
 			path = Controllers/Controllers;
+			sourceTree = "<group>";
+		};
+		05B15A661F6702E700B891B6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				05B15A671F67031100B891B6 /* TDTabBarController.swift */,
+			);
+			name = Base;
+			path = Base/Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B15A6C1F67063000B891B6 /* ToDoViewController.xib in Resources */,
 				05ADEEA91F66F6B00083EFC5 /* LaunchScreen.storyboard in Resources */,
 				05ADEEA61F66F6B00083EFC5 /* Assets.xcassets in Resources */,
 			);
@@ -137,6 +156,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B15A681F67031100B891B6 /* TDTabBarController.swift in Sources */,
+				05B15A6B1F67063000B891B6 /* ToDoViewController.swift in Sources */,
 				05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +328,7 @@
 				05ADEEAF1F66F6B00083EFC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
