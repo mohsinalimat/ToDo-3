@@ -27,10 +27,18 @@ class ToDoViewController: UIViewController {
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
-        let newTask = Task()
-        newTask.text = NSUUID().uuidString
-        newTask.save()
-        appendTask(newTask.copy() as! Task)
+        
+        ///
+        let vc = TaskDetailsViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        self.tabBarController?.present(vc, animated:true)
+        
+        ///
+//        let newTask = Task()
+//        newTask.text = NSUUID().uuidString
+//        newTask.save()
+//        appendTask(newTask.copy() as! Task)
     }
     
     override func didReceiveMemoryWarning() {
