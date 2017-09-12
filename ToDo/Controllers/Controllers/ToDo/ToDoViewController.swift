@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ToDoViewController: UIViewController {
     
@@ -15,6 +16,10 @@ class ToDoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+    }
+    
+    @objc func addTapped(sender: UIBarButtonItem) {
     }
     
     override func didReceiveMemoryWarning() {

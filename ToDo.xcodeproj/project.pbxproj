@@ -14,6 +14,9 @@
 		05682BD71F684D0E005E6796 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05682BD51F684D0E005E6796 /* ToDoTableViewCell.xib */; };
 		05682BDB1F684EE8005E6796 /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BD91F684EE8005E6796 /* DoneViewController.swift */; };
 		05682BDC1F684EE8005E6796 /* DoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05682BDA1F684EE8005E6796 /* DoneViewController.xib */; };
+		05682BDF1F687484005E6796 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BDE1F687484005E6796 /* Task.swift */; };
+		05682BE11F6879EA005E6796 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BE01F6879EA005E6796 /* BaseModel.swift */; };
+		05682BE71F687B37005E6796 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BE61F687B37005E6796 /* Realm.swift */; };
 		05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */; };
 		05ADEEA61F66F6B00083EFC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */; };
 		05ADEEA91F66F6B00083EFC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA71F66F6B00083EFC5 /* LaunchScreen.storyboard */; };
@@ -28,6 +31,9 @@
 		05682BD51F684D0E005E6796 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		05682BD91F684EE8005E6796 /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		05682BDA1F684EE8005E6796 /* DoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoneViewController.xib; sourceTree = "<group>"; };
+		05682BDE1F687484005E6796 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		05682BE01F6879EA005E6796 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		05682BE61F687B37005E6796 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		05ADEE991F66F6B00083EFC5 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +82,30 @@
 			path = Done;
 			sourceTree = "<group>";
 		};
+		05682BDD1F68746C005E6796 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05682BDE1F687484005E6796 /* Task.swift */,
+				05682BE01F6879EA005E6796 /* BaseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		05682BE21F687AC6005E6796 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		05682BE51F687B2C005E6796 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05682BE61F687B37005E6796 /* Realm.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		05723B4A1F684A2D00A49663 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +137,9 @@
 		05ADEE9B1F66F6B00083EFC5 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				05682BE51F687B2C005E6796 /* Extensions */,
+				05682BE21F687AC6005E6796 /* Interactors */,
+				05682BDD1F68746C005E6796 /* Models */,
 				05ADEEB01F66F7040083EFC5 /* Controllers */,
 				05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */,
 				05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */,
@@ -262,9 +295,12 @@
 			files = (
 				05682BCC1F684B76005E6796 /* TDTabBarViewController.swift in Sources */,
 				05682BDB1F684EE8005E6796 /* DoneViewController.swift in Sources */,
+				05682BE11F6879EA005E6796 /* BaseModel.swift in Sources */,
 				05682BD11F684C69005E6796 /* ToDoViewController.swift in Sources */,
 				05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */,
+				05682BDF1F687484005E6796 /* Task.swift in Sources */,
 				05682BD61F684D0E005E6796 /* ToDoTableViewCell.swift in Sources */,
+				05682BE71F687B37005E6796 /* Realm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
