@@ -27,24 +27,27 @@ class ToDoViewController: UIViewController {
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
-        
-        ///
         let vc = TaskDetailsViewController()
+        vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         self.tabBarController?.present(vc, animated:true)
-        
-        ///
-//        let newTask = Task()
-//        newTask.text = NSUUID().uuidString
-//        newTask.save()
-//        appendTask(newTask.copy() as! Task)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+}
+
+extension ToDoViewController: TaskDetailsDelegate {
+    func didFinishEditingTask(task: Task?) {
+        guard let task = task else {
+            return
+        }
+        appendTask(task.copy() as! Task)
+        task.save()
+    }
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {

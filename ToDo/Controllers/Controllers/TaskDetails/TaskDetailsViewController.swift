@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol TaskDetailsDelegate {
+    func didFinishEditingTask(task: Task?)
+}
+
 class TaskDetailsViewController: UIViewController {
     var task: Task?
+    var delegate: TaskDetailsDelegate?
     
+    @IBOutlet weak var taskTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,6 +26,9 @@ class TaskDetailsViewController: UIViewController {
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        task = Task()
+        task!.text = taskTextView.text
+        delegate?.didFinishEditingTask(task: task)
         dismiss(animated: true, completion: nil)
     }
 }
