@@ -35,7 +35,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func registerCells() {
-        let cells : [UITableViewCell] = []
+        let cells : [UITableViewCell.Type] = [ToDoTableViewCell.self]
         cells.forEach { cell in
             let cellName = String(describing: cell.self)
             let nib = UINib(nibName: cellName, bundle: nil)
@@ -44,16 +44,16 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 //TODO: sections by date //Today // tomorrow //etc
+        return 5
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 1 //TODO: sections by date //Today // tomorrow //etc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellName = String(describing: UITableViewCell.self)
-        let cell  = tableView.dequeueReusableCell(withIdentifier: cellName) as! UITableViewCell
+        let cellName = String(describing: ToDoTableViewCell.self)
+        let cell  = tableView.dequeueReusableCell(withIdentifier: cellName) as! ToDoTableViewCell
         return cell
     }
     
