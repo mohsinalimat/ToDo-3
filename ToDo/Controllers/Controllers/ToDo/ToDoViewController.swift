@@ -7,19 +7,30 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ToDoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var tasks = [Task]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "ToDo"
+        tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = false") as! [Task]
         configureTableView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
+        let newTask = Task()
+        newTask.text = NSUUID().uuidString
+        newTask.save()
+        appendTask(newTask.copy() as! Task)
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,7 +40,6 @@ class ToDoViewController: UIViewController {
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
-    
     // MARK: TableView
     func configureTableView() {
         tableView.delegate = self
@@ -49,7 +59,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return tasks.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,7 +69,29 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellName = String(describing: ToDoTableViewCell.self)
         let cell  = tableView.dequeueReusableCell(withIdentifier: cellName) as! ToDoTableViewCell
+        cell.configure(task: tasks[indexPath.row])
         return cell
+    }
+}
+
+extension ToDoViewController {
+    
+    func appendTask(_ task: Task) {
+        tableView.beginUpdates()
+        self.tasks.append(task)
+        tableView.insertRows(at: [IndexPath(row: tasks.count-1, section: 0)], with: .left)
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            TaskInteractor.markTaskDone(tasks[indexPath.row])
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .right)
+        }
     }
     
 }

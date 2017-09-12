@@ -14,6 +14,7 @@ class Task: BaseModel {
     @objc dynamic var text = ""
     @objc dynamic var dueDate = Date()
     @objc dynamic var creationDate = Date()
+    @objc dynamic var isDone = false
     
     override static func primaryKey() -> String? {
         return "id"
@@ -25,6 +26,7 @@ class Task: BaseModel {
         copy.text = text
         copy.dueDate = dueDate
         copy.creationDate = creationDate
+        copy.isDone = isDone
         return copy
     }
 }

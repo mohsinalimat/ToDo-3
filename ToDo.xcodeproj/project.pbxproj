@@ -17,6 +17,8 @@
 		05682BDF1F687484005E6796 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BDE1F687484005E6796 /* Task.swift */; };
 		05682BE11F6879EA005E6796 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BE01F6879EA005E6796 /* BaseModel.swift */; };
 		05682BE71F687B37005E6796 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BE61F687B37005E6796 /* Realm.swift */; };
+		05682BE91F687FEA005E6796 /* ModelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BE81F687FEA005E6796 /* ModelInteractor.swift */; };
+		05682BEB1F6880C1005E6796 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BEA1F6880C1005E6796 /* TaskInteractor.swift */; };
 		05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */; };
 		05ADEEA61F66F6B00083EFC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */; };
 		05ADEEA91F66F6B00083EFC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05ADEEA71F66F6B00083EFC5 /* LaunchScreen.storyboard */; };
@@ -34,6 +36,8 @@
 		05682BDE1F687484005E6796 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		05682BE01F6879EA005E6796 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		05682BE61F687B37005E6796 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		05682BE81F687FEA005E6796 /* ModelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInteractor.swift; sourceTree = "<group>"; };
+		05682BEA1F6880C1005E6796 /* TaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
 		05ADEE991F66F6B00083EFC5 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05ADEE9C1F66F6B00083EFC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05ADEEA51F66F6B00083EFC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		05682BE21F687AC6005E6796 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				05682BE81F687FEA005E6796 /* ModelInteractor.swift */,
+				05682BEA1F6880C1005E6796 /* TaskInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -298,7 +304,9 @@
 				05682BE11F6879EA005E6796 /* BaseModel.swift in Sources */,
 				05682BD11F684C69005E6796 /* ToDoViewController.swift in Sources */,
 				05ADEE9D1F66F6B00083EFC5 /* AppDelegate.swift in Sources */,
+				05682BE91F687FEA005E6796 /* ModelInteractor.swift in Sources */,
 				05682BDF1F687484005E6796 /* Task.swift in Sources */,
+				05682BEB1F6880C1005E6796 /* TaskInteractor.swift in Sources */,
 				05682BD61F684D0E005E6796 /* ToDoTableViewCell.swift in Sources */,
 				05682BE71F687B37005E6796 /* Realm.swift in Sources */,
 			);
