@@ -26,6 +26,10 @@ class TaskDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         guard !taskTextView.text.isEmpty else {
             self.showAlert("You can't save an empty Task!")

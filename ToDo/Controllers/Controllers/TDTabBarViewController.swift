@@ -22,7 +22,7 @@ class TDTabBarController: UITabBarController {
         let doneNavController = UINavigationController(rootViewController: DoneViewController())
         styleTabBarItem(doneNavController, title: "Done", image: UIImage(named: "todo")!)
         
-        viewControllers = [todoNavController,doneNavController]
+        viewControllers = [todoNavController, doneNavController]
     }
     
     private func styleTabBarItem(_ viewController: UIViewController, title: String, image: UIImage) {
