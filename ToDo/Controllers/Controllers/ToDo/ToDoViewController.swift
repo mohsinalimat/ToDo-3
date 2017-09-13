@@ -148,8 +148,10 @@ extension ToDoViewController {
     
     func markTaskAsDone(indexPath: IndexPath) {
         TaskInteractor.markTaskDone(tasks[indexPath.row], done: true)
+        tableView.beginUpdates()
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
+        tableView.endUpdates()
     }
     
     func deleteTask(indexPath: IndexPath) {
