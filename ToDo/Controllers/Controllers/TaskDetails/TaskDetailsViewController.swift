@@ -20,6 +20,7 @@ class TaskDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTextView.roundCorners(withRadius: 10)
+        taskTextView.text = task?.text
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +36,11 @@ class TaskDetailsViewController: UIViewController {
             self.showAlert("You can't save an empty Task!")
             return
         }
-        task = Task()
+        
+        if self.task == nil {
+            task = Task()
+        }
+        
         task!.text = taskTextView.text
         delegate?.didFinishEditingTask(task: task)
         dismiss(animated: true, completion: nil)

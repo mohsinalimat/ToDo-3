@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0559EDD81F69C5F20011B15C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0559EDD61F69C5F20011B15C /* Realm.framework */; };
+		0559EDD91F69C5F20011B15C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0559EDD61F69C5F20011B15C /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0559EDDA1F69C5F20011B15C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0559EDD71F69C5F20011B15C /* RealmSwift.framework */; };
+		0559EDDB1F69C5F20011B15C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0559EDD71F69C5F20011B15C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05682BCC1F684B76005E6796 /* TDTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BCB1F684B76005E6796 /* TDTabBarViewController.swift */; };
 		05682BD11F684C69005E6796 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05682BCF1F684C69005E6796 /* ToDoViewController.swift */; };
 		05682BD21F684C69005E6796 /* ToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05682BD01F684C69005E6796 /* ToDoViewController.xib */; };
@@ -31,7 +35,24 @@
 		176722A22E7CC37FA1F03E20 /* Pods_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFC6E5287F27B946702FAD7 /* Pods_ToDo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0559EDDC1F69C5F20011B15C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0559EDDB1F69C5F20011B15C /* RealmSwift.framework in Embed Frameworks */,
+				0559EDD91F69C5F20011B15C /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0559EDD61F69C5F20011B15C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		0559EDD71F69C5F20011B15C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		05682BCB1F684B76005E6796 /* TDTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDTabBarViewController.swift; sourceTree = "<group>"; };
 		05682BCF1F684C69005E6796 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		05682BD01F684C69005E6796 /* ToDoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoViewController.xib; sourceTree = "<group>"; };
@@ -65,7 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0559EDD81F69C5F20011B15C /* Realm.framework in Frameworks */,
 				176722A22E7CC37FA1F03E20 /* Pods_ToDo.framework in Frameworks */,
+				0559EDDA1F69C5F20011B15C /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +164,8 @@
 		05ADEE901F66F6B00083EFC5 = {
 			isa = PBXGroup;
 			children = (
+				0559EDD61F69C5F20011B15C /* Realm.framework */,
+				0559EDD71F69C5F20011B15C /* RealmSwift.framework */,
 				05ADEE9B1F66F6B00083EFC5 /* ToDo */,
 				05ADEE9A1F66F6B00083EFC5 /* Products */,
 				206D9933235DDB9DCDEC7116 /* Pods */,
@@ -214,6 +239,8 @@
 				05ADEE971F66F6B00083EFC5 /* Resources */,
 				4E564AB3C570AED99424EB90 /* [CP] Embed Pods Frameworks */,
 				3A0D0FBEC8CE77AC4235B4E9 /* [CP] Copy Pods Resources */,
+				0559EDDC1F69C5F20011B15C /* Embed Frameworks */,
+				0559EDDD1F69C5F70011B15C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -274,6 +301,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0559EDDD1F69C5F70011B15C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
 		3A0D0FBEC8CE77AC4235B4E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,12 +507,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B8BKM8368H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamed.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -483,12 +527,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B8BKM8368H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ToDo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hamed.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

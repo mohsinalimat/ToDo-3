@@ -100,13 +100,13 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DoneViewController {
-    private func markTaskAsDone(indexPath: IndexPath) {
+    func markTaskAsDone(indexPath: IndexPath) {
         TaskInteractor.markTaskDone(tasks[indexPath.row], done: false)
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
     }
     
-    private func deleteTask(indexPath: IndexPath) {
+    func deleteTask(indexPath: IndexPath) {
         TaskInteractor.deleteTask(tasks[indexPath.row])
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)

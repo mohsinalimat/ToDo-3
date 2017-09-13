@@ -31,10 +31,17 @@ class ToDoViewController: UIViewController {
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
+        openTaskDetails()
+    }
+    
+    func openTaskDetails(_ task: Task? = nil) {
         let vc = TaskDetailsViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
+        if let task = task {
+            vc.task = task
+        }
         self.tabBarController?.present(vc, animated:true)
     }
     
@@ -49,8 +56,20 @@ extension ToDoViewController: TaskDetailsDelegate {
         guard let task = task else {
             return
         }
-        appendTask(task.copy() as! Task)
+        var exists = false
+        tasks.forEach{
+            if ($0.id == task.id) {
+                exists = true
+            }
+        }
         task.save()
+        
+        if exists {
+            tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = false") as! [Task]
+        } else {
+            appendTask(task.copy() as! Task)
+        }
+        
     }
 }
 
@@ -91,6 +110,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        openTaskDetails(tasks[indexPath.row])
     }
     
     //MARK: UITableViewRowActions
@@ -126,13 +146,13 @@ extension ToDoViewController {
         tableView.endUpdates()
     }
     
-    private func markTaskAsDone(indexPath: IndexPath) {
+    func markTaskAsDone(indexPath: IndexPath) {
         TaskInteractor.markTaskDone(tasks[indexPath.row], done: true)
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
     }
     
-    private func deleteTask(indexPath: IndexPath) {
+    func deleteTask(indexPath: IndexPath) {
         TaskInteractor.deleteTask(tasks[indexPath.row])
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
