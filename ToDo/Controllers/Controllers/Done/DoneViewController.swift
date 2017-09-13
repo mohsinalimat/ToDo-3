@@ -108,7 +108,9 @@ extension DoneViewController {
     
     func deleteTask(indexPath: IndexPath) {
         TaskInteractor.deleteTask(tasks[indexPath.row])
+        tableView.beginUpdates()
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
+        tableView.endUpdates()
     }
 }
