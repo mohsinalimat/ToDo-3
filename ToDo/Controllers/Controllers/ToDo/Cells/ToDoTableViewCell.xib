@@ -24,15 +24,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxd-Ku-NxY">
+                        <rect key="frame" x="0.0" y="2" width="7" height="93.5"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.32549019610000002" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="7" id="sTN-Oq-nAR"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="x2V-cW-NcL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="5UC-2c-e36"/>
                     <constraint firstAttribute="bottom" secondItem="x2V-cW-NcL" secondAttribute="bottom" constant="12" id="ap3-u9-k9y"/>
+                    <constraint firstAttribute="bottom" secondItem="wxd-Ku-NxY" secondAttribute="bottom" constant="2" id="bfl-Ni-lGG"/>
                     <constraint firstAttribute="trailing" secondItem="x2V-cW-NcL" secondAttribute="trailing" constant="12" id="csw-AK-S9U"/>
+                    <constraint firstItem="wxd-Ku-NxY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hKh-zp-e5u"/>
                     <constraint firstItem="x2V-cW-NcL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="t2a-aR-g7c"/>
+                    <constraint firstItem="wxd-Ku-NxY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="urM-fl-1gf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="sideColorView" destination="wxd-Ku-NxY" id="hbh-c1-frv"/>
                 <outlet property="taskLabel" destination="x2V-cW-NcL" id="jA7-kT-2d2"/>
             </connections>
             <point key="canvasLocation" x="34" y="27"/>
