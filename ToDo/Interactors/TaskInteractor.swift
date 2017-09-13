@@ -11,8 +11,8 @@ import RealmSwift
 
 class TaskInteractor: ModelInteractor {
     
-    static func markTaskDone(_ task: Task) {
-        task.isDone = true
+    static func markTaskDone(_ task: Task, done: Bool) {
+        task.isDone = done
         task.save()
     }
     

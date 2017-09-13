@@ -21,8 +21,12 @@ class DoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Done"
-        tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = true") as! [Task]
         configureTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = true") as! [Task]
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,5 +69,41 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(task: tasks[indexPath.row])
         return cell
     }
+    
+    //MARK: UITableViewRowActions
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Delete") { action, indexPath in
+            self.deleteTask(indexPath: indexPath)
+        }
+        deleteButton.backgroundColor = .red
+        
+        let todoButton = UITableViewRowAction(style: .default, title: "ToDo 🤦‍♂️") { action, indexPath in
+            self.markTaskAsDone(indexPath: indexPath)
+        }
+        todoButton.backgroundColor = .green
+        return [deleteButton, todoButton]
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
 }
 
+extension DoneViewController {
+    private func markTaskAsDone(indexPath: IndexPath) {
+        TaskInteractor.markTaskDone(tasks[indexPath.row], done: false)
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .right)
+    }
+    
+    private func deleteTask(indexPath: IndexPath) {
+        TaskInteractor.deleteTask(tasks[indexPath.row])
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .right)
+    }
+}

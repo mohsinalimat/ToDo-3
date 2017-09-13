@@ -21,9 +21,13 @@ class ToDoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "ToDo"
-        tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = false") as! [Task]
         configureTableView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tasks  = TaskInteractor.offlineIndex(Task.self, filter: "isDone = false") as! [Task]
     }
     
     @objc func addTapped(sender: UIBarButtonItem) {
@@ -84,16 +88,9 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(task: tasks[indexPath.row])
         return cell
     }
-}
-
-extension ToDoViewController {
     
-    func appendTask(_ task: Task) {
-        tableView.beginUpdates()
-        self.tasks.append(task)
-        tableView.insertRows(at: [IndexPath(row: tasks.count-1, section: 0)], with: .left)
-        tableView.endUpdates()
-    }
+    
+    //MARK: UITableViewRowActions
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -113,8 +110,21 @@ extension ToDoViewController {
         return [doneButton, deleteButton]
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
+}
+
+extension ToDoViewController {
+    
+    func appendTask(_ task: Task) {
+        tableView.beginUpdates()
+        self.tasks.append(task)
+        tableView.insertRows(at: [IndexPath(row: tasks.count-1, section: 0)], with: .left)
+        tableView.endUpdates()
+    }
+    
     private func markTaskAsDone(indexPath: IndexPath) {
-        TaskInteractor.markTaskDone(tasks[indexPath.row])
+        TaskInteractor.markTaskDone(tasks[indexPath.row], done: true)
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
     }
@@ -124,8 +134,4 @@ extension ToDoViewController {
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .right)
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    }
-    
 }
