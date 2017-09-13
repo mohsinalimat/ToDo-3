@@ -20,20 +20,14 @@ class TDTabBarController: UITabBarController {
         styleTabBarItem(todoNavController, title: "ToDo", image: UIImage(named: "todo")!)
         
         let doneNavController = UINavigationController(rootViewController: DoneViewController())
-        styleTabBarItem(doneNavController, title: "Done", image: UIImage(named: "todo")!)
+        styleTabBarItem(doneNavController, title: "Done", image: UIImage(named: "done")!)
         
         viewControllers = [todoNavController, doneNavController]
     }
     
     private func styleTabBarItem(_ viewController: UIViewController, title: String, image: UIImage) {
-        let newSize = CGSize(width: 20, height: 20)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
-        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
         viewController.tabBarItem.title = title
-        viewController.tabBarItem.image = newImage
-        
+        viewController.tabBarItem.image = image
         if #available(iOS 10.0, *) {
             viewController.tabBarItem.badgeColor = .red
         }
