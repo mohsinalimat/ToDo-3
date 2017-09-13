@@ -7,10 +7,19 @@
 //
 
 import Foundation
+import RealmSwift
 
 class TaskInteractor: ModelInteractor {
+    
     static func markTaskDone(_ task: Task) {
         task.isDone = true
         task.save()
+    }
+    
+    static func deleteTask(_ task: Task) {
+        let realm = try! Realm()
+        try! realm.write {
+        realm.delete(realm.objects(Task.self).filter("id = '\(task.id)'"))
+        }
     }
 }

@@ -58,6 +58,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         registerCells()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     func registerCells() {
@@ -97,12 +98,34 @@ extension ToDoViewController {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            TaskInteractor.markTaskDone(tasks[indexPath.row])
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .right)
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "Delete") { action, indexPath in
+            self.deleteTask(indexPath: indexPath)
         }
+        deleteButton.backgroundColor = .red
+        
+        let doneButton = UITableViewRowAction(style: .default, title: "Done 💃🏻") { action, indexPath in
+            self.markTaskAsDone(indexPath: indexPath)
+        }
+        doneButton.backgroundColor = .green
+        return [doneButton, deleteButton]
+    }
+    
+    private func markTaskAsDone(indexPath: IndexPath) {
+        TaskInteractor.markTaskDone(tasks[indexPath.row])
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .right)
+    }
+    
+    private func deleteTask(indexPath: IndexPath) {
+        TaskInteractor.deleteTask(tasks[indexPath.row])
+        tasks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .right)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
     
 }

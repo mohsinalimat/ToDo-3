@@ -39,6 +39,7 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
         registerCells()
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     func registerCells() {
